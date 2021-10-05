@@ -67,5 +67,19 @@ namespace TokenBasedAuth.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet]
+        [Route("getnums")]
+        public IActionResult GetSomeRandomNumbers()
+        {
+            var numList = new List<int>();
+            var r = new Random();
+            for (int i = 0; i < 400; i++)
+            {
+                numList.Add(r.Next(1000000, 999999999));
+            }
+
+            return Ok(new { ListOfRandomNumbers = numList });
+        }
     }
 }
